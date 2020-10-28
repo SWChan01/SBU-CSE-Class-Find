@@ -1,7 +1,22 @@
 <template>
     <div class="class">
-        {{eachClass.subj}} {{eachClass.course}}
-        <button class="add" @click="saveClass">Add</button>
+
+  
+            <div class="span1 heading">
+                <p>{{eachClass.subj}}{{eachClass.course}}.{{eachClass.section}}</p> 
+            </div>
+            <div class="span1 courseInfo">
+                <p>{{eachClass.courseName}}</p>
+                <p>Time: {{eachClass.days}} {{eachClass.startTime}}-{{eachClass.endTime}}</p>
+                <p>Instructor:{{eachClass.instructor}}</p>
+            </div>
+      
+
+       
+
+
+       <button class="add" @click="saveClass">Add</button>
+
     </div>
 </template>
 
@@ -39,7 +54,9 @@ export default {
 
     methods: {
         saveClass(){
-            console.log(this.eachClass)
+            console.log(this.eachClass);
+
+
             axios
             .post("http://127.0.0.1:5000/scheduleOPS", {
                 subj : this.eachClass.subj,
@@ -54,11 +71,31 @@ export default {
                 
             })
             .then(() => {
-            console.log("saved");
+                console.log("saved");
+                this.$router.push('/schedule');
             }).catch((err)=>{
                 console.log(err)
             })
-        }
+
+
+
+        },
+
+        // checkOverlapping(A){
+        //     A.sort((a, b) => a[1] - b[1]); // Sort by end time
+        //     for (let i = 0; i < A.length; ++i) {
+        //         const end = A[i][1];
+        //         if (A[i + 1] && A[i + 1][0] < end) { 
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+
+        // }
+
+
+
+
     }
 }
 </script>
@@ -68,13 +105,24 @@ export default {
         border: 1px solid black;
         border-bottom: none;
         padding: 5px;
+        position: relative;
     }
 
 
     .add{
-        margin-left: 80vw;
-        padding: 20px;
+        position: absolute;
         background-color:aquamarine;
+        top: 70px;
+        left: 70vw;
+        padding: 10px;
     }
 
+    .span1{
+        display: inline-block;
+    }
+    .courseInfo{
+        margin-left:20vw;
+        margin-top:2vw;
+
+    }
 </style>

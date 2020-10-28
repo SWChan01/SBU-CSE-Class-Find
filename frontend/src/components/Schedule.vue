@@ -80,9 +80,9 @@
 
 
             <td></td>
-            <td class="selected">CSE 303 (1:15PM-2:35pm) <p>Introduction To Theory Of Computations</p></td>
             <td></td>
-            <td class="selected">CSE 303 (1:15PM-2:35pm) <p>Introduction To Theory Of Computations</p></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -92,9 +92,9 @@
 
 
             <td></td>
-            <td class="selected">CSE 303 (1:15PM-2:35pm) <p>Introduction To Theory Of Computations</p></td>
             <td></td>
-            <td class="selected">CSE 303 (1:15PM-2:35pm) <p>Introduction To Theory Of Computations</p></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -104,9 +104,9 @@
 
 
             <td></td>
-            <td class="selected">CSE 373 (3:00PM-4:20PM) <p>Analysis Of Algorithms</p></td>
             <td></td>
-            <td class="selected">CSE 373 (3:00PM-4:20PM) <p>Analysis Of Algorithms</p></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -115,10 +115,10 @@
             <td>4:00pm</td>
 
 
-            <td class="selected">CSE 312 (4:25PM - 5:45PM) <p>Legal, Social, and Ethical Issues in Information Systems</p></td>
-            <td class="overlap">CSE 373 (3:00PM-4:20PM) <p>Analysis Of Algorithms</p><br>CSE 316 (4:45PM - 6:05PM) <p>Fundamentals Of Software Development</p></td>
-            <td class="selected">CSE 312 (4:25PM - 5:45PM) <p>Legal, Social, and Ethical Issues in Information Systems</p></td>
-            <td class="overlap">CSE 373 (3:00PM-4:20PM) <p>Analysis Of Algorithms</p><br>CSE 316 (4:45PM - 6:05PM) <p>Fundamentals Of Software Development</p></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -128,16 +128,36 @@
 
 
 
-            <td class="selected">CSE 312 (4:25PM - 5:45PM) <p>Legal, Social, and Ethical Issues in Information Systems</p></td>
-            <td class="selected">CSE 316 (4:45PM - 6:05PM) <p>Fundamentals Of Software Development</p></td>
-            <td class="selected">CSE 312 (4:25PM - 5:45PM)<p>Legal, Social, and Ethical Issues in Information Systems</p></td>
-            <td class="selected">CSE 316 (4:45PM - 6:05PM) <p>Fundamentals Of Software Development</p></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>6:00pm</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>7:00pm</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8:00pm</td>
             <td></td>
             <td></td>
             <td></td>
@@ -190,11 +210,13 @@ export default {
             this.allsavedclasses.forEach(element => {
                 
                 let allDays = element.days;
-                let startTime = this.convertTime12to24(element.startTime)
-            
-            
+                let startTime = this.convertTime12to24(element.startTime);
 
 
+                let daySelector;
+                let startTimeSelector;
+            
+        
                 for(let i=0;i<allDays.length;i++){
                     let day = allDays.charAt(i);
                     
@@ -203,51 +225,59 @@ export default {
 
 
                     if(day === 'T'){
-                        let daySelector = this.daysDict[allDays.substring(i,i+2)];
-                        i++;
-
-                        let startTimeSelector = this.timeDict[startTime.substring(0,2)];
-
-                        
-
-                        console.log("day selector : "+daySelector +"start time selector :"+startTimeSelector);
-                        let targetDom = document.getElementsByTagName("tr")[startTimeSelector+1].childNodes[daySelector+1];
-                        targetDom.classList.add("selected");
-                        targetDom.innerHTML = `${element.subj} ${element.course} (${element.startTime}-${element.endTime}) <p> ${element.courseName} </p>`;
+                        daySelector = this.daysDict[allDays.substring(i,i+2)];
+                        startTimeSelector = this.timeDict[startTime.substring(0,2)];
+                        i++;   
                     }
 
 
                     else if (day === 'R'){
-                        let daySelector = this.RecDayDict[allDays];
-                        let startTimeSelector = this.timeDict[startTime.substring(0,2)];
+                        daySelector = this.RecDayDict[allDays];
+                        startTimeSelector = this.timeDict[startTime.substring(0,2)];
                         i+=4;
-                        console.log("day selector :" + daySelector+" start time: "+startTimeSelector);
-
-                        let targetDom = document.getElementsByTagName("tr")[startTimeSelector+1].childNodes[daySelector+1];
-                        targetDom.classList.add("selected");
-                        targetDom.innerHTML = `${element.subj} ${element.course} (${element.startTime}-${element.endTime}) <p> ${element.courseName} </p>`;
                     }
 
 
                     else{
-                        let daySelector = this.daysDict[day];
-                        let startTimeSelector = this.timeDict[startTime.substring(0,2)];
-
-                        console.log("day selector :" + daySelector+" start time: "+startTimeSelector);
-
-                        let targetDom = document.getElementsByTagName("tr")[startTimeSelector+1].childNodes[daySelector+1];
-                        targetDom.classList.add("selected");
-                        targetDom.innerHTML = `${element.subj} ${element.course} (${element.startTime}-${element.endTime}) <p> ${element.courseName} </p>`;
-
-
-
-
+                        daySelector = this.daysDict[day];
+                        startTimeSelector = this.timeDict[startTime.substring(0,2)];
                     }
 
-                  
+                    console.log("day selector : "+daySelector +"start time selector :"+startTimeSelector);
+                    let targetDom = document.getElementsByTagName("tr")[startTimeSelector+1].childNodes[daySelector+1];
+                    let secondDom = document.getElementsByTagName("tr")[startTimeSelector+2].childNodes[daySelector+1];
+                    
+
+                    let minute = element.startTime.substring(3,5);
+                    let res = parseInt(minute)
+                    
+                    //if the class takes up two hour slots
+                    if(res+element.duration > 60){
+
+                        // secondDom.classList.add("selected")
+                        
+                        // //separate contents acorss two hour slots
+                        // targetDom.innerHTML = `${element.subj} ${element.course} (${element.startTime}-${element.endTime})`;
+                        // secondDom.innerHTML = `<p> ${element.courseName} </p>`;
+                        
+                        // //get rid of bottom border
+                        // targetDom.style = 'border-bottom:none'
 
 
+                        this.insertClass(targetDom,element,true);
+                        this.insertClass(secondDom,element,false);
+                    
+                    }
 
+
+                    else{
+                        //targetDom.innerHTML = `${element.subj} ${element.course} (${element.startTime}-${element.endTime}) <p> ${element.courseName} </p>`;
+                        this.insertClass(targetDom,element,true);
+                    }
+
+                    
+
+                
                 }
 
 
@@ -275,7 +305,38 @@ export default {
             }
 
             return `${hours}:${minutes}`;
-    }
+        },
+
+        insertClass (destDOM,element,isFirst){
+            
+
+            //if occupied
+            if(destDOM.innerHTML){
+                if(isFirst){
+                    destDOM.innerHTML+=`<p>${element.subj} ${element.course}.${element.section}</p> <p>(${element.startTime}-${element.endTime})</p>`;
+                }
+                    
+                else{
+                    localStorage.temp = destDOM.innerHTML;
+                    destDOM.innerHTML="";
+                    destDOM.innerHTML+=`<p>${element.subj} ${element.course}.${element.section} (${element.startTime}-${element.endTime})</p>`;
+                    destDOM.innerHTML+=localStorage.temp;
+                } 
+                
+            }
+
+            //when dom is not occupied
+            else{
+
+                destDOM.innerHTML+=`<p>${element.subj} ${element.course}.${element.section} (${element.startTime}-${element.endTime})</p>`;
+                
+    
+            }
+
+
+            destDOM.classList.add("selected");
+
+        }
 
 
 
@@ -296,6 +357,7 @@ export default {
         border-collapse: collapse;
         width: 100%;
         table-layout: fixed;
+        font-size: 11pt;
     }
 
     td{
@@ -305,9 +367,6 @@ export default {
         height: 50px;
         word-wrap: break-word;         /* All browsers since IE 5.5+ */
         overflow-wrap: break-word;
-    }
-
-    tr{
         border-bottom: 1px solid black;
     }
 /* 

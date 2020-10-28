@@ -9,9 +9,6 @@
 import Searchbox from "./Searchbox";
 import allClasses from "../allClasses";
 import Classes from "./Classes";
-import axios from 'axios';
-
-
 
 export default {
   name: "App",
@@ -23,12 +20,14 @@ export default {
   data() {
     return {
       classes: allClasses,
+      allsavedClassesTimes : [],
     };
   },
 
   methods: {
-    searchQuery(query) {
+    searchQuery(query,mode) {
       console.log(query);
+      console.log("mode is "+mode);
     
       //let courseName = query.substring(0,3);
       let courseNum = query.substring(3, 6);
@@ -37,21 +36,54 @@ export default {
 
       console.log(allClasses);
 
-      this.classes = this.classes.filter(
-        (element) => element.course == courseNum
-      );
+      console.log("ertguihgerigerierg"+allClasses[0].courseName)
+
+      if(mode === "All Fields"){
+          this.classes = allClasses.filter(
+            element => {
+              element.course.includes(query)
+            }
+        );
+      }
+
+      else if(mode === "Time"){
+        this.classes = allClasses.filter(
+          element => element.startTime.includes(query)
+        );
+      }
+      else if(mode === "Title"){
+        this.classes = allClasses.filter(
+          element => element.courseName.includes(query)
+        );
+      }
+
+      else if(mode === "Class Number"){
+        this.classes = allClasses.filter(
+          element => element.course.includes(query)
+        );
+      }
 
 
-      axios
-        .get("http://127.0.0.1:5000/hello")
-        .then(resp=>{
-          console.log(resp.data);
-        })
+
+
+      
+
+    },
+
+    //  getData(){
+    //         return axios
+    //         .get("http://127.0.0.1:5000/scheduleOPS")
+    //         .then(resp=>{
+    //             console.log(JSON.parse(resp.data.result));
+    //             this.allsavedclasses = JSON.parse(resp.data.result);
+    //         })
+    //     },
+    
+
+    
 
 
 
-
-    },  
   },
 };
 </script>

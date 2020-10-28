@@ -20,7 +20,7 @@ function a(){
     let course18 = ["CSE", "114", "LAB", "L10", "MW", "02:30 PM", "03:50 PM", "25-Jan-21", "19-May-21", "80", "In Person", "COMPUTER SCI", "2116", "Praveen Tripathi", "30", "0", " ", " ", "Introduction to Object-Oriented Programming"];
     let course19 = ["CSE", "160", "LEC", "1", "MW", "05:30 PM", "06:50 PM", "25-Jan-21", "19-May-21", "80", "In Person", "TBA", "TBA", "Paul Fodor", "50", "0", " ", " ", "Computer Science A: Honors"];
     let course20 = ["CSE", "161", "LAB", "L01", "MW", "07:00 PM", "08:20 PM", "25-Jan-21", "19-May-21", "80", "In Person", "COMPUTER SCI", "2129", "Paul Fodor", "35", "0", " ", " ", "Laboratory for Computer Science A: Honors"];
-    let course21 = ["CSE", "214", "LEC", "1", "TUTH", "08:30 AM", "09:50 AM", "25-Jan-21", "19-May-21", "80", "In Person", "TBA", "TBA", "Ahmad Esmaili", "120", "30", " ", " "];
+    let course21 = ["CSE", "214", "LEC", "1", "TUTH", "08:30 AM", "09:50 AM", "25-Jan-21", "19-May-21", "80", "In Person", "TBA", "TBA", "Ahmad Esmaili", "120", "30", " ", " ", "Data Structures"];
     let course22 = ["CSE", "214", "REC", "R01", "RETH", "10:00 AM", "10:53 AM", "25-Jan-21", "19-May-21", "53", "In Person", "COMPUTER SCI", "2129", "Ahmad Esmaili", "30", "5", " ", " ", "Data Structures"];
     let course23 = ["CSE", "214", "REC", "R02", "RETU", "10:00 AM", "10:53 AM", "25-Jan-21", "19-May-21", "53", "In Person", "COMPUTER SCI", "2129", "Ahmad Esmaili", "30", "5", " ", " ", "Data Structures"];
     let course24 = ["CSE", "214", "REC", "R03", "RETU", "04:00 PM", "04:53 PM", "25-Jan-21", "19-May-21", "53", "In Person", "COMPUTER SCI", "2129", "Ahmad Esmaili", "30", "5", " ", " ", "Data Structures"];

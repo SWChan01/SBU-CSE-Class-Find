@@ -1,9 +1,9 @@
 <template>
-    <form @submit.prevent = "$emit('searchquery',query)">
+    <form @submit.prevent = "$emit('searchquery',query,mode)">
 
         <input v-model="query" type="text">
 
-        <select name="option" id="option">
+        <select name="option" id="option" v-model="mode">
             <option value="All Fields">All Fields</option>
             <option value="Title">Title</option>
             <option value="Class Number">Class Number</option>
@@ -25,6 +25,7 @@ export default {
     data() {
         return {
             query: "",
+            mode:"All Fields",
         }
     },
 }
