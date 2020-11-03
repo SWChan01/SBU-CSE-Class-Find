@@ -2,7 +2,7 @@
 <div>
     <ol>
         <li v-bind:key="eachClass.id" v-for = "eachClass in classList">
-            <ClassItem  v-bind:eachClass ="eachClass"  />
+            <ClassItem v-bind:eachClass ="eachClass" v-bind:classTimes="classTimes"  />
         </li>
     </ol>
 </div>
@@ -19,7 +19,12 @@ export default {
         ClassItem,
     },
 
-    props : ["classList"]
+    props : ["classList","classTimes"],
+
+
+
+
+
 }
 </script>
 

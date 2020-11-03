@@ -200,13 +200,11 @@ export default {
             return axios
             .get("http://127.0.0.1:5000/scheduleOPS")
             .then(resp=>{
-                console.log(JSON.parse(resp.data.result));
                 this.allsavedclasses = JSON.parse(resp.data.result);
             })
         },
 
         assignAttr(){
-            console.log(this.allsavedclasses);
             this.allsavedclasses.forEach(element => {
                 
                 let allDays = element.days;
@@ -219,8 +217,6 @@ export default {
         
                 for(let i=0;i<allDays.length;i++){
                     let day = allDays.charAt(i);
-                    
-                    console.log("day: "+day +" , start time :"+startTime);
 
 
 
@@ -243,29 +239,51 @@ export default {
                         startTimeSelector = this.timeDict[startTime.substring(0,2)];
                     }
 
-                    console.log("day selector : "+daySelector +"start time selector :"+startTimeSelector);
+            
                     let targetDom = document.getElementsByTagName("tr")[startTimeSelector+1].childNodes[daySelector+1];
                     let secondDom = document.getElementsByTagName("tr")[startTimeSelector+2].childNodes[daySelector+1];
-                    
+                    let thirdDom;
+                    let fourthDom;
+
+                    if(document.getElementsByTagName("tr")[startTimeSelector+4])
+                        thirdDom = document.getElementsByTagName("tr")[startTimeSelector+3].childNodes[daySelector+1];
+                    if(document.getElementsByTagName("tr")[startTimeSelector+4])
+                        fourthDom = document.getElementsByTagName("tr")[startTimeSelector+4].childNodes[daySelector+1]
 
                     let minute = element.startTime.substring(3,5);
-                    let res = parseInt(minute)
+                    let res = parseInt(minute) +parseInt(element.duration);
+
+                    console.log("min "+minute+" res "+res)
+
                     
                     //if the class takes up two hour slots
-                    if(res+element.duration > 60){
+                    if(res>60){
 
-                        // secondDom.classList.add("selected")
-                        
-                        // //separate contents acorss two hour slots
-                        // targetDom.innerHTML = `${element.subj} ${element.course} (${element.startTime}-${element.endTime})`;
-                        // secondDom.innerHTML = `<p> ${element.courseName} </p>`;
-                        
-                        // //get rid of bottom border
-                        // targetDom.style = 'border-bottom:none'
+                        if(res<120){
+
+                            this.insertClass(targetDom,element,true);
+                            this.insertClass(secondDom,element,false);
+                            targetDom.classList.add("twoClass");
+                        }
+
+                        else if(res<180){
+                            this.insertClass(targetDom,element,true);
+                            this.insertClass(secondDom,element,false);
+                            this.insertClass(thirdDom,element,true);
+                            targetDom.classList.add("twoClass");
+                        }
+
+                        else{
+                            this.insertClass(targetDom,element,true);
+                            this.insertClass(secondDom,element,false);
+                            this.insertClass(thirdDom,element,true);
+                            this.insertClass(fourthDom,element,true);
+                            targetDom.classList.add("twoClass");
+                            secondDom.classList.add("twoClass");
+                            thirdDom.classList.add("twoClass");
+                        }
 
 
-                        this.insertClass(targetDom,element,true);
-                        this.insertClass(secondDom,element,false);
                     
                     }
 
@@ -285,9 +303,6 @@ export default {
             })
         },
         
-        displayClasses(){
-            console.log(this.allsavedclasses);
-        },
 
 
 
@@ -321,7 +336,9 @@ export default {
                     destDOM.innerHTML="";
                     destDOM.innerHTML+=`<p>${element.subj} ${element.course}.${element.section} (${element.startTime}-${element.endTime})</p>`;
                     destDOM.innerHTML+=localStorage.temp;
-                } 
+                }
+                
+                destDOM.classList.add("overlap")
                 
             }
 
@@ -363,11 +380,11 @@ export default {
     td{
         padding-bottom: 10px;
         padding-right:30px ;
-        border-right: 1px solid black;
+        border-right: 1px solid rgb(202, 189, 189);
         height: 50px;
         word-wrap: break-word;         /* All browsers since IE 5.5+ */
         overflow-wrap: break-word;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid  rgb(206, 186, 186);
     }
 /* 
     .days{
@@ -385,10 +402,14 @@ export default {
     }
 
     .selected{
-        background-color:gray
+        background-color:bisque
     }
 
     .overlap{
-        background-color:mediumvioletred
+        background-color:violet
+    }
+
+    .twoClass{
+        border-bottom: none;
     }
 </style>
