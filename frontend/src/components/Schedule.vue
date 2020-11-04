@@ -1,9 +1,6 @@
 <template>
 
 <div>
-    <h4>Name:Singwa Chan</h4>
-    <h4>ID:112305543</h4>
-
     <table>
         <tr>
             <th>Time</th>
@@ -375,6 +372,7 @@ export default {
         width: 100%;
         table-layout: fixed;
         font-size: 11pt;
+        margin-top: 50px;
     }
 
     td{

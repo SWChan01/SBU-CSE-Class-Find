@@ -1,6 +1,6 @@
 function a(){
 
-    let course1 = ["CSE", "101", "LEC", "1", "MWF", "11:00 AM", "11:53 AM", "25-Jan-21", "19-May-21", "53", "In Person", "TBA", "TBA", "Kevin McDonnell", "210", "70", "", "", "Computer Science Principles"];
+    let course1 = ["CSE", "101", "LEC", "1", "MWF", "11:00 AM", "11:53 AM", "25-Jan-21", "19-May-21", "53", "In Person", "TBA", "TBA", "Kevin McDonnell", "210", "70", " ", " ", "Computer Science Principles"];
     let course2 = ["CSE", "101", "LAB", "L01", "M", "12:00 PM", "12:53 PM", "25-Jan-21", "19-May-21", "53", "In Person", "COMPUTER SCI", "2114", "Kevin McDonnell", "30", "10", " ", " ", "Computer Science Principles"];
     let course3 = ["CSE", "101", "LAB", "L02", "M", "01:00 PM", "01:53 PM", "25-Jan-21", "19-May-21", "53", "In Person", "COMPUTER SCI", "2114", "Kevin McDonnell", "30", "10", " ", " ", "Computer Science Principles"];
     let course4 = ["CSE", "101", "LAB", "L03", "TU", "04:00 PM", "04:53 PM", "25-Jan-21", "19-May-21", "53", "In Person", "COMPUTER SCI", "2114", "Kevin McDonnell", "30", "10", " ", " ", "Computer Science Principles"];

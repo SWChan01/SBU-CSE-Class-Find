@@ -1,4 +1,6 @@
 <template>
+<div>
+    <h2>SBU CSE Classfind</h2>
     <form @submit.prevent = "$emit('searchquery',query,mode)">
 
         <input v-model="query" type="text">
@@ -15,6 +17,7 @@
         <button class="submitBtn">Submit</button>
 
     </form>
+</div>
 </template>
 
 <script>
@@ -33,8 +36,9 @@ export default {
 
 <style>
     input{
-        margin-left: 15vw;
-        width:50vw;
+        margin-left: 30vw;
+        margin-bottom: 4vw;
+        width:35vw;
         padding: 5px;
     }
     
@@ -50,5 +54,10 @@ export default {
     select{
         padding: 5px;
         margin-left: 10px;
+    }
+    h2{
+        text-align: center;
+        margin-bottom: 50px;
+        margin-top: 50px;
     }
 </style>

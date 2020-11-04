@@ -3,7 +3,14 @@
 
   
             <div class="span1 heading">
-                <p>{{eachClass.subj}}{{eachClass.course}}.{{eachClass.section}}</p> 
+                <p>{{eachClass.subj}}{{eachClass.course}}.{{eachClass.section}}</p>
+                <br>
+                <p>Building : {{eachClass.building}}</p>
+                <p>Room: {{eachClass.room}}</p>
+                <p>Enrollment Cap : {{eachClass.enrollmentCap}}</p>
+                <p>Waitlist Cap: {{eachClass.waitCap}}</p>
+                <p>Combined Description: {{eachClass.combinedSession}}</p>
+                <p>Combined Enrollment Cap : {{eachClass.combinedSessionCap}}</p> 
             </div>
             <div class="span1 courseInfo">
                 <p>{{eachClass.courseName}}</p>
@@ -213,28 +220,39 @@ export default {
 </script>
 
 <style >
+    li{
+        list-style-type: none;
+    }
     .class{
-        border: 1px solid black;
+        border: 1px solid rgb(185, 181, 181);
         border-bottom: none;
         padding: 5px;
         position: relative;
+        width: 70%;
+        margin-left: 15vw;
     }
 
 
     .add{
         position: absolute;
         background-color:aquamarine;
-        top: 70px;
-        left: 70vw;
+        top: 100px;
+        left: 1200px;
         padding: 10px;
     }
 
     .span1{
-        display: inline-block;
+        /* display: inline-block; */
+        display:block;
     }
     .courseInfo{
-        margin-left:20vw;
-        margin-top:2vw;
+        /* margin-left:35vw; */
+
+        position: absolute;
+        top: 75px;
+        left: 600px;
 
     }
+
+    
 </style>

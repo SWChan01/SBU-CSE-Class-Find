@@ -31,42 +31,37 @@ export default {
       console.log("mode is "+mode);
     
       //let courseName = query.substring(0,3);
-      let courseNum = query.substring(3, 6);
 
-      console.log(courseNum);
+      query = query.toLowerCase();
 
-      console.log(allClasses);
-
-      console.log("ertguihgerigerierg"+allClasses[0].courseName)
+      console.log(query)
 
       if(mode === "All Fields"){
           this.classes = allClasses.filter(
-            element => {
-              element.course.includes(query)
-            }
+            element => element.startTime.toLowerCase().includes(query) || element.days.toLowerCase().includes(query) || element.courseName.toLowerCase().includes(query) || element.course.toLowerCase().includes(query)
         );
       }
 
       else if(mode === "Time"){
         this.classes = allClasses.filter(
-          element => element.startTime.includes(query)
+          element => element.startTime.toLowerCase().includes(query)
         );
       }
       else if(mode === "Title"){
         this.classes = allClasses.filter(
-          element => element.courseName.includes(query)
+          element => element.courseName.toLowerCase().includes(query)
         );
       }
 
       else if(mode === "Class Number"){
         this.classes = allClasses.filter(
-          element => element.course.includes(query)
+          element => element.course.toLowerCase().includes(query)
         );
       }
 
       else if(mode === "Day"){
         this.classes = allClasses.filter(
-          element => element.days.includes(query)
+          element => element.days.toLowerCase().includes(query)
         );
       }
 
