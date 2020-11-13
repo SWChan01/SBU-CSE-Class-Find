@@ -30,38 +30,35 @@ export default {
       console.log(query);
       console.log("mode is "+mode);
     
-      //let courseName = query.substring(0,3);
-
-      query = query.toLowerCase();
-
-      console.log(query)
+      query = query.toLowerCase().split(" ");
 
       if(mode === "All Fields"){
           this.classes = allClasses.filter(
-            element => element.startTime.toLowerCase().includes(query) || element.days.toLowerCase().includes(query) || element.courseName.toLowerCase().includes(query) || element.course.toLowerCase().includes(query)
+            element =>  
+              query.some(queryE=>element.startTime.toLowerCase().includes(queryE) || element.days.toLowerCase().includes(queryE) || element.courseName.toLowerCase().includes(queryE) || element.course.toLowerCase().includes(queryE) || element.instructor.toLowerCase().includes(queryE) || element.room.toLowerCase().includes(queryE) || element.building.toLowerCase().includes(queryE) || element.subj.toLowerCase().includes(queryE))
         );
       }
 
       else if(mode === "Time"){
         this.classes = allClasses.filter(
-          element => element.startTime.toLowerCase().includes(query)
+          element => query.some(queryE=>element.startTime.toLowerCase().includes(queryE))
         );
       }
       else if(mode === "Title"){
         this.classes = allClasses.filter(
-          element => element.courseName.toLowerCase().includes(query)
+          element => query.some(queryE=>element.courseName.toLowerCase().includes(queryE))
         );
       }
 
       else if(mode === "Class Number"){
         this.classes = allClasses.filter(
-          element => element.course.toLowerCase().includes(query)
+          element => query.some(queryE=>element.course.toLowerCase().includes(queryE))
         );
       }
 
       else if(mode === "Day"){
         this.classes = allClasses.filter(
-          element => element.days.toLowerCase().includes(query)
+          element => query.some(queryE=>element.days.toLowerCase().includes(queryE))
         );
       }
 

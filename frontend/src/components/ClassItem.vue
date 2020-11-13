@@ -37,28 +37,6 @@ export default {
     name : "ClassItem",
     props: ["eachClass","classTimes"],
 
-
-
-// subj:all_courses[i][0],
-//             course:all_courses[i][1],
-//             component:all_courses[i][2],
-//             section:all_courses[i][3],
-//             days:all_courses[i][4],
-//             startTime:all_courses[i][5],
-//             endTime:all_courses[i][6],
-//             startDate:all_courses[i][7],
-//             endDate:all_courses[i][8],
-//             duration:all_courses[i][9],
-//             instructionMode:all_courses[i][10],
-//             building:all_courses[i][11],
-//             room:all_courses[i][12],
-//             instructor:all_courses[i][13],
-//             enrollmentCap:all_courses[i][14],
-//             waitCap:all_courses[i][15],
-//             combinedSession:all_courses[i][16],
-//             combinedSessionCap:all_courses[i][17],
-
-
     methods: {
         saveClass(){
             console.log(this.eachClass);
@@ -237,7 +215,7 @@ export default {
         position: absolute;
         background-color:aquamarine;
         top: 100px;
-        left: 1200px;
+        left: 50vw;
         padding: 10px;
     }
 
@@ -250,7 +228,7 @@ export default {
 
         position: absolute;
         top: 75px;
-        left: 600px;
+        left: 20vw;
 
     }
 

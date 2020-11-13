@@ -384,12 +384,6 @@ export default {
         overflow-wrap: break-word;
         border-bottom: 1px solid  rgb(206, 186, 186);
     }
-/* 
-    .days{
-        padding-left: 30px;
-        background-color: black;
-
-    } */
 
     th{
         padding-left:30px;

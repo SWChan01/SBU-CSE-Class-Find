@@ -32,21 +32,9 @@ mongo = PyMongo(app)
 CORS(app, support_credentials=True)
 
 
-# class HelloWorld(Resource):
-#     def get(self):
-#         string = schedules.find_one({"test":"testing"})
-#         # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-#         print(string)
-#         return {"hello":dumps(string)}
-
-
-# api.add_resource(HelloWorld,'/hello')
-
-
 class Schedules(Resource):
     def post(self):
         args = parser.parse_args()
-        print(args)
         schedules.insert_one(args)
     
 
